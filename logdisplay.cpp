@@ -75,56 +75,12 @@ void LogDisplay::setMaxLines(int maxLines)
     this->maxLines = maxLines;
     updateLogDisplay();
 }
-//Working
-//bool LogDisplay::updateLogList()
-//{
-//    logList.clear();
-//    QFile file("C:/Users/arpit.k/Downloads/LogTail/logtail/sample.txt");
-//    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-//        return false;
-//    }
-//    QTextStream in(&file);
-//    while (!in.atEnd()) {
-//        logList.append(in.readLine());
-//    }
-//    file.close();
-//    return true;
-//   }
-//////Working
-//void LogDisplay::updateLogDisplay()
-//{
-//    logDisplay->clear();
-//    int count = 0;
-
-//    QTextCursor cursor(logDisplay->document());
-//    cursor.movePosition(QTextCursor::End);
-
-
-
-//        for(int i = logList.size() - 1; i >= 0 && count < maxLines; --i)
-//        {
-//            QString log = logList[i];
-
-//            if ((errorCheckbox->isChecked() && log.contains("ERROR")) ||
-//                (warningCheckbox->isChecked() && log.contains("WARNING")) ||
-//                (infoCheckbox->isChecked() && log.contains("INFO"))) {
-
-//                QTextCharFormat format;
-//                if (log.contains("ERROR")) {
-//                    format.setForeground(Qt::red);
-//                } else if (log.contains("WARNING")) {
-//                    format.setForeground(Qt::darkYellow);
-//                }
-
-//                cursor.setCharFormat(format);
-//                cursor.insertText(log + "\n");
-//                ++count;
-//            }
-//        }
-
-//}
 
 ////NEW
+/* It first clears the logList object to make sure there are no pre-existing logs in it. It then creates a QFile object with the path of the log file to be read. 
+If the file is unable to be opened in read-only and text mode, the function returns false to indicate failure. 
+If the file is successfully opened, it reads each line from the file using a QTextStream object and appends it to the logList object.
+Once all lines have been read and appended, the function closes the file and returns true to indicate success. */
 bool LogDisplay::updateLogList()
 {
     logList.clear();
@@ -139,7 +95,13 @@ bool LogDisplay::updateLogList()
     file.close();
     return true;
 }
-
+/*
+This function updates the display of the logs. It first clears the log display area using the clear() function. 
+It then creates a QTextCursor object and moves it to the end of the document, which will be the location where the new logs will be inserted. 
+The function then loops through the logList object in reverse order, starting from the latest log. 
+If the count of inserted lines exceeds the maxLines value, the loop breaks. For each log, the function checks if the error, warning, or info checkboxes are checked and whether the log contains the corresponding keyword. 
+If the log meets these conditions, it formats the text with a different color for errors and warnings, and inserts it into the log display area using the QTextCursor object. The cursor is then moved up one line, and the formatting and insertion process is repeated for the next log until either the maximum number of lines is reached or all logs in the logList object have been checked.
+*/
 void LogDisplay::updateLogDisplay()
 {
     logDisplay->clear();
