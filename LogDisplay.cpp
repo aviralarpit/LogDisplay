@@ -1,3 +1,36 @@
+/*
+******************************************************************************
+* License Information: Accord Global Technology Solutions Private Limited.
+* 72 & 73, Krishna Reddy Colony, Domlur layout
+* Bangalore - 560071, INDIA
+* Licensed software and all rights reserved.
+******************************************************************************
+* File:             LogDisplay.cpp
+*
+* Description:      Display Logs by reading from log file
+*
+* Compiler:         gcc
+*
+* Compiler options:
+*
+* Pragma:           none
+*
+* H/W platform:
+*
+* Portability:
+*
+* Author(s):            Arpit K @ AGTSPL
+*
+* Classes:              LogDisplay
+*   
+* References:
+*
+* Version History:
+* <Version Number> <Author> <date> <defect Number> <Modification made
+* and reason
+* for modification>
+* 1.1
+*****************************************************************************/
 #include "logdisplay.h"
 #include<QLabel>
 #include <QFile>
